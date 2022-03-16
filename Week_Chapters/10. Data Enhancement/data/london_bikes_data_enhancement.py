@@ -23,7 +23,7 @@ from xgboost               import XGBRegressor
 from lightgbm              import LGBMRegressor
 from catboost              import CatBoostRegressor
 
-data = pd.read_csv('london_merged.csv')
+data = pd.read_csv(r'data\london_merged.csv')
 
 np.random.seed(0)
 data.head()
@@ -93,9 +93,9 @@ gen.head(3)
 y = data['cnt']
 x = data.drop(['cnt'], axis=1)
 
-cat_vars = ['year','month','hour', 'weather_code','is_weekend','is_holiday','season']
+cat_vars = ['year','month','hour']
 #cat_vars = ['year','month','hour', 'weather_code','season_weekend','is_holiday','season']
-num_vars = ['t2','hum','wind_speed']
+num_vars = ['t2','hum','wind_speed', 'weather_code','is_weekend','is_holiday','season']
 
 x_train, x_val, y_train, y_val = model_selection.train_test_split(x, y, test_size=0.2, random_state=0)
 
